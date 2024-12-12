@@ -1,0 +1,502 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+  font-family: "Poppins";
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--main);
+  border-radius: 2rem;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --main: #19a093;
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin-left: 25rem;
+}
+
+body.active {
+  margin-left: 10rem;
+}
+
+.dateTime {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.dateTime .date,
+.time {
+  font-size: 1.6rem;
+  color: var(--main);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+/* admin sidebar  */
+
+.sidebar {
+  padding: 2rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25rem;
+  height: 100vh;
+  background-color: var(--main);
+}
+
+.sidebar.active {
+  width: 10rem;
+}
+.sidebar.active .menu li a span {
+  display: none;
+}
+
+.sidebar .logo {
+  font-size: 2rem;
+  color: var(--white);
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sidebar .menu {
+  position: relative;
+  height: 90%;
+  list-style: none;
+  margin: 2rem;
+}
+
+.sidebar .menu li {
+  padding: 0.8rem 2rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+}
+.sidebar .menu li:hover,
+.sidebar .menu li.active {
+  background-color: #fff;
+}
+
+.sidebar .menu li:hover a,
+.sidebar .menu li.active a {
+  color: var(--main);
+}
+
+.sidebar .menu li a {
+  color: #fff;
+  font-size: 1.6rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+}
+.setting {
+  position: absolute;
+  bottom: 4.5rem;
+}
+
+/* admin header  */
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  background-color: var(--white);
+  z-index: 99;
+}
+
+#menu {
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--main);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid transparent;
+}
+#menu:hover {
+  color: var(--main);
+  background: transparent;
+  border-color: var(--main);
+}
+
+.icons {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 3rem;
+  border: 0.2rem solid var(--white);
+  background-color: var(--main);
+  color: var(--white);
+  position: relative;
+  font-size: 2.5rem;
+}
+
+.heading {
+  font-size: 2rem;
+  color: var(--main);
+  margin: 1rem 0;
+}
+
+.data_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.data_container .box {
+  box-shadow: var(--shadow);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}
+.data_container .box .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.data_container .box .flex i {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.data_container .box .flex .num {
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  color: var(--white);
+}
+.data_container .box .head {
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.pro {
+  background-color: #84ccc5;
+}
+.pro span {
+  background-color: var(--main);
+}
+
+.cate {
+  background-color: #a3cde0;
+}
+.cate span {
+  background-color: #0276aa;
+}
+
+.con {
+  background-color: #f48eb1;
+}
+.con span {
+  background-color: #ba184f;
+}
+
+.skill {
+  background-color: #a8a8a8;
+}
+.skill span {
+  background-color: #4c4c4c;
+}
+
+/* table  */
+
+.data {
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.data .flex {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tableTitle {
+  font-size: 2rem;
+  color: var(--main);
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border-left: 0.5rem solid var(--main);
+}
+
+.add_btn {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: var(--main);
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  border: 0.2rem solid var(--main);
+}
+.add_btn:hover {
+  color: var(--main);
+  background: transparent;
+  border-color: var(--main);
+}
+
+.table {
+  width: 100%;
+  padding: 0 0 2rem 0;
+  box-shadow: var(--shadow);
+  overflow: auto;
+}
+
+.tableData {
+  width: 100%;
+  overflow: auto;
+}
+
+.tableData thead th {
+  background-color: var(--main);
+  padding: 0.8rem;
+  color: var(--white);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.tableData tbody td {
+  padding: 0.5rem;
+  color: var(--black);
+  font-size: 1.4rem;
+  text-align: center;
+}
+.tableData tbody .email {
+  text-transform: lowercase;
+}
+
+.tableData tbody td .btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.tableData tbody td a {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1.6rem;
+}
+.tableData tbody td .edit {
+  background-color: var(--main);
+}
+.tableData tbody td .delete {
+  background-color: #ba184f;
+}
+
+/* pagination  */
+
+.pagination {
+  width: 100%;
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+.pagination li a {
+  display: inline-block;
+  width: 4.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  background-color: #84ccc5;
+  cursor: pointer;
+}
+
+.pagination li a.active,
+.pagination li a:hover {
+  background: var(--main);
+}
+
+.pagination li a {
+  color: #fff;
+}
+/* add data form  */
+
+.add_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  max-width: 50rem;
+  margin: 2rem auto;
+  box-shadow: 0 0.2rem 1.5rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.form .message p {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.7rem;
+  background-color: var(--main);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+}
+
+.add_form {
+  width: 100%;
+}
+.add_form .head {
+  text-transform: uppercase;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  border-left: 0.5rem solid var(--main);
+  margin-bottom: 1rem;
+  color: var(--main);
+}
+
+.add_form input,
+.add_form textarea,
+.add_form select {
+  width: 100%;
+  border: 0.2rem solid rgba(0, 0, 0, 0.2);
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  color: var(--black);
+  font-weight: 500;
+  text-transform: none;
+}
+
+.add_form input:hover,
+.add_form input:focus,
+.add_form textarea:hover,
+.add_form textarea:focus,
+.add_form select:hover,
+.add_form select:focus {
+  border: 0.2rem solid var(--main);
+}
+
+.add_form textarea {
+  resize: none;
+  height: 9rem;
+}
+
+.add_form .two {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.add_form .submit_btn {
+  background-color: var(--main);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: 0.2rem solid transparent;
+  margin: 1rem 0;
+}
+
+.add_form .submit_btn:hover {
+  border-color: var(--main);
+  color: var(--main);
+  background: transparent;
+}
+/*page setting  */
+.page_setting {
+  max-width: 80%;
+  width: 100%;
+  margin: 0.5rem auto;
+}
+
+.show_img {
+  width: 5rem !important;
+  height: 5rem !important;
+  border-radius: 0.5rem !important;
+}
+/* ==================@media===================> */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  .data .flex {
+    padding: 2rem 1rem;
+  }
+  .two {
+    flex-direction: column;
+  }
+
+  .form {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    margin-left: 0rem;
+  }
+  .sidebar {
+    left: -25rem;
+  }
+
+  body.active {
+    margin-left: 25rem;
+  }
+  .sidebar.active {
+    left: 0;
+    width: 25rem;
+  }
+  .sidebar.active .menu li a span {
+    display: block;
+  }
+}
