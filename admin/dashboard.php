@@ -1,6 +1,6 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 
 // total projects 
@@ -28,7 +28,7 @@ $total_user = mysqli_num_rows($query_user);
 ?>
 
 <div class="data">
-    <h2 class="heading">today's data</h2>
+    <h2 class="heading">our datas</h2>
 
     <!--  box container  -->
     <div class="data_container">
@@ -36,7 +36,7 @@ $total_user = mysqli_num_rows($query_user);
         <div class="box  pro">
             <div class="flex">
                 <i class="fas fa-project-diagram"></i>
-                <span class="num"><?php echo $total_pro ?></span>
+                <span class="num " id="pro"><?php echo $total_pro ?></span>
             </div>
             <p class="head">
                 total projects
@@ -46,7 +46,7 @@ $total_user = mysqli_num_rows($query_user);
         <div class="box cate">
             <div class="flex">
                 <i class="fas fa-list"></i>
-                <span class="num"><?php echo $total_cat ?></span>
+                <span class="num" id="cate"><?php echo $total_cat ?></span>
             </div>
             <p class="head">
                 total categorys
@@ -56,7 +56,7 @@ $total_user = mysqli_num_rows($query_user);
         <div class="box con">
             <div class="flex">
                 <i class="fas fa-phone"></i>
-                <span class="num"><?php echo $total_con ?></span>
+                <span class="num" id="con"><?php echo $total_con ?></span>
 
             </div>
             <p class="head">
@@ -67,7 +67,7 @@ $total_user = mysqli_num_rows($query_user);
         <div class="box skill">
             <div class="flex">
                 <i class="fas fa-users"></i>
-                <span class="num"><?php echo $total_user ?></span>
+                <span class="num" id="user"><?php echo $total_user ?></span>
 
             </div>
             <p class="head">
@@ -76,5 +76,23 @@ $total_user = mysqli_num_rows($query_user);
         </div>
 
     </div>
+
+    <!-- charts  -->
+
+    <div class="chartjs">
+        <div class="chart">
+            <canvas id="myChart1" area-label="chart" role="img"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="myChart2" area-label="chart" role="img"></canvas>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="./js/chart.js"></script>
 </div>
 </div>

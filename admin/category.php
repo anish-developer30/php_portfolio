@@ -1,6 +1,6 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 ?>
 <div class="data">
@@ -10,7 +10,7 @@ include './conn.php';
         <a href="add_category.php" class="add_btn">add category</a>
     </div>
     <div class="table">
-        <table class="tableData">
+        <table class="tableData" border="1" cellspacing="0">
             <thead>
                 <tr>
                     <th>S.no</th>

@@ -1,26 +1,30 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 
-error_reporting(0);
+if ($_SESSION['role'] == 0) {
+    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
+}
 
 $message = '';
 if (isset($_POST['experience'])) {
     $role = mysqli_real_escape_string($conn, $_POST['role']);
-    $year = mysqli_real_escape_string($conn, $_POST['year']);
+    $syear = mysqli_real_escape_string($conn, $_POST['syear']);
+    $eyear = mysqli_real_escape_string($conn, $_POST['eyear']);
     $company = mysqli_real_escape_string($conn, $_POST['company']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
     if (empty($role)) {
         $message = "<p>pleace enter your role</p>";
-    } else if (empty($year)) {
-        $message = "<p>pleace enter year</p>";
+    } else if (empty($syear) || empty($eyear)) {
+        $message = "<p>pleace enter years</p>";
     } else if (empty($company)) {
         $message = "<p>pleace enter company name</p>";
     } else {
-        $insert_ex  = "INSERT INTO `experience`(`role`, `year`, `company`, `description`) VALUES ('$role','$year','$company','$description')";
+        $insert_ex  = "INSERT INTO `experience`(`role`, `syear`,`eyear`, `company`, `description`) VALUES ('$role','$syear','$eyear','$company','$description')";
         if (mysqli_query($conn, $insert_ex)) {
-            header("Location: http://localhost/MYSite/admin/experience.php");
+            // header("Location:{$rootName}/admin/experience.php");
+            echo "<script> window.location.href='http://localhost/MYSite/admin/experience.php'</script>";
         } else {
             $message = "<p>Error</p>";
         }
@@ -47,11 +51,18 @@ if (isset($_POST['experience'])) {
                                                                             }
                                                                             ?>">
 
-                <input type="text" placeholder="year" name="year" value="<?php
-                                                                            if (isset($message)) {
-                                                                                echo $year;
-                                                                            }
-                                                                            ?>">
+                <div class="two">
+                    <input type="text" placeholder="start year" name="syear" value="<?php
+                                                                                    if (isset($message)) {
+                                                                                        echo $syear;
+                                                                                    }
+                                                                                    ?>">
+                    <input type="text" placeholder="end year" name="eyear" value="<?php
+                                                                                    if (isset($message)) {
+                                                                                        echo $eyear;
+                                                                                    }
+                                                                                    ?>">
+                </div>
                 <input type=" text" name="company" placeholder="company name" value="<?php
                                                                                         if (isset($message)) {
                                                                                             echo $company;

@@ -33,18 +33,43 @@ include './admin/conn.php';
 
     <header class="header">
 
-        <a href="" class="logo">
+        <a href="<?php echo $rootName ?>" class="logo">
             <?php echo $data['name'] ?><span>.</span>
         </a>
         <div class="navbar">
-            <a href="index.php">home</a>
-            <a href="about.php">about</a>
-            <a href="resume.php">resume</a>
-            <a href="project.php">projects</a>
-            <a href="contact.php" class="contact">contact us</a>
+            <a href="index.php" id="home">home</a>
+            <a href="about.php" id="about">about</a>
+            <a href="resume.php" id="resume">resume</a>
+            <a href="project.php" id="project">projects</a>
+            <a href="contact.php" class="contact" id="contact">contact us</a>
         </div>
 
         <div id="menu" class="fas fa-bars"></div>
 
 
     </header>
+
+    <script>
+        let name = window.location.pathname.split('/')[2];
+        //  index.php
+        if (name == 'index.php') {
+            document.querySelector('#home').classList.add('active');
+        }
+        //  about.php
+        if (name == 'about.php') {
+            document.querySelector('#about').classList.add('active');
+        }
+        //  resume.php
+        if (name == 'resume.php') {
+            document.querySelector('#resume').classList.add('active');
+        }
+        //  project
+        if (name == 'project.php') {
+            document.querySelector('#project').classList.add('active');
+        }
+
+        //  contact
+        if (name == 'contact.php') {
+            document.querySelector('#contact').classList.add('active');
+        }
+    </script>

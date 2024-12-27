@@ -1,10 +1,11 @@
 <?php
-session_start();
+include './conn.php';
 date_default_timezone_set('Asia/kolkata');
+session_start();
 
 
 if (!isset($_SESSION['username'])) {
-    header("Location: http://localhost/MYSite/admin");
+    header("Location:{$rootName}/admin/");
 }
 
 ?>
@@ -35,14 +36,32 @@ if (!isset($_SESSION['username'])) {
         <div class="dateTime">
             <div class="date"><?php echo date('j/n/Y'); ?></div>
             <div class="date"><?php echo date('g:i a'); ?></div>
-            <div class="date"> <?php echo $_SESSION['username'] ?></div>
+            <div class="date"> <?php
+                                if (isset($_SESSION['username'])) {
+                                    echo $_SESSION['username'];
+                                } else {
+                                    echo "welcome";
+                                }
+                                ?></div>
 
             <div class="icons">
-                <?php echo $_SESSION['username'][0]  ?>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    echo $_SESSION['username'][0];
+                } else {
+                    echo "W";
+                }
+
+                ?>
             </div>
         </div>
 
     </section>
+
+
+
+
+
 
 </body>
 

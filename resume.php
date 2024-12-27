@@ -49,7 +49,7 @@ include './header.php';
                     ?>
                             <div class="box">
                                 <div class="flex">
-                                    <h4> <span class="fas fa-calendar-alt"></span> <?php echo $ex['year'] ?></h4>
+                                    <h4> <span class="fas fa-calendar-alt"></span> <?php echo $ex['syear'] . '-' . $ex['eyear'] ?></h4>
                                     <p> <span class="fas fa-building"></span> <?php echo $ex['company'] ?></p>
                                 </div>
                                 <h3><?php echo $ex['role'] ?></h3>

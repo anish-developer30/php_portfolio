@@ -34,10 +34,10 @@ $data = mysqli_fetch_assoc($query_setting);
             <h2 class="title">
                 social links
             </h2>
-            <a href="">facebook</a>
-            <a href="">instagram</a>
-            <a href="">linkedin</a>
-            <a href="">github</a>
+            <!-- <a href="">facebook</a>
+            <a href="">instagram</a> -->
+            <a href="https://www.linkedin.com/in/anishrathod123V" target="_blank">linkedin</a>
+            <a href="https://github.com/anish-developer30" target="_blank">github</a>
         </div>
 
         <div class="box">

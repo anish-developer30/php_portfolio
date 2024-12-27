@@ -1,11 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
 include './conn.php';
 session_start();
 
 if (isset($_SESSION['username'])) {
-    header("Location: http://localhost/MYSite/admin/dashboard.php");
+    header("Location:{$rootName}/admin/dashboard.php");
 }
-
 $message = '';
 if (isset($_POST['login'])) {
 
@@ -22,20 +23,14 @@ if (isset($_POST['login'])) {
                 $_SESSION['username'] = $data['name'];
                 $_SESSION['user_id'] = $data['user_id'];
                 $_SESSION['role'] = $data['role'];
-                $message = '<p>login successfull</p>';
-                header("refresh:1; url=http://localhost/MYSite/admin/dashboard.php");
+                header("Location:{$rootName}/admin/dashboard.php");
             }
         } else {
             $message = '<p>  invalid login  details</p>';
         }
     }
 }
-
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
 
 
 
@@ -65,5 +60,6 @@ if (isset($_POST['login'])) {
         </div>
     </div>
 </body>
+
 
 </html>

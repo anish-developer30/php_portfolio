@@ -1,6 +1,6 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 $message = '';
 if (isset($_POST['update_category'])) {
@@ -17,7 +17,8 @@ if (isset($_POST['update_category'])) {
         } else {
             $update_cat =  "UPDATE `category` SET `cat_name`='$cat_name',`post`=0 WHERE `cat_id`=$cat_id";
             if (mysqli_query($conn, $update_cat)) {
-                header("Location: http://localhost/MYSite/admin/category.php");
+                // header("Location:{$rootName}/admin/category.php");
+                echo "<script> window.location.href='http://localhost/MYSite/admin/category.php'</script>";
             } else {
                 $message = "<p>category update faild </p>";
             }

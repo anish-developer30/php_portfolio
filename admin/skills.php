@@ -2,33 +2,27 @@
 include './header.php';
 include './sidebar.php';
 include './conn.php';
-
-if ($_SESSION['role'] == 0) {
-    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
-}
 ?>
 <div class="data">
     <!-- tables  -->
     <div class="flex">
-        <h2 class="tableTitle">contact data</h2>
+        <h2 class="tableTitle">category data</h2>
+        <a href="add_skills.php" class="add_btn">add skills</a>
     </div>
     <div class="table">
         <table class="tableData" border="1" cellspacing="0">
             <thead>
                 <tr>
                     <th>S.no</th>
-                    <th>name</th>
-                    <th>email</th>
-                    <th>phone</th>
-                    <th>country</th>
-                    <th>city</th>
+                    <th>category name</th>
                     <th>action</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- fetch contact data  -->
+                <!-- fetch category data  -->
                 <?php
                 $limit = 5;
+
                 if (isset($_GET['page'])) {
                     $page = $_GET['page'];
                 } else {
@@ -36,48 +30,40 @@ if ($_SESSION['role'] == 0) {
                 }
 
                 $offset = ($page - 1) * $limit;
-                $select_contact = "SELECT * FROM `contact` ORDER BY contact_id DESC  LIMIT {$offset},{$limit} ";
-                $select_contact_run = mysqli_query($conn, $select_contact);
-                if (mysqli_num_rows($select_contact_run) > 0) {
+                $select_sk = "SELECT * FROM `skills` ORDER BY sk_id DESC  LIMIT {$offset},{$limit} ";
+                $select_sk_run = mysqli_query($conn, $select_sk);
+                if (mysqli_num_rows($select_sk_run) > 0) {
                     $sno = $offset + 1;
-                    while ($data = mysqli_fetch_assoc($select_contact_run)) {
+                    while ($data = mysqli_fetch_assoc($select_sk_run)) {
                 ?>
-
                         <tr>
                             <td><?php echo $sno ?></td>
-                            <td><?php echo $data['name']; ?></td>
-                            <td class="email"><?php echo $data['email']; ?></td>
-                            <td><?php echo $data['phone']; ?></td>
-                            <td><?php echo $data['country']; ?></td>
-                            <td><?php echo $data['city']; ?></td>
+                            <td><?php echo $data['sk_name']; ?></td>
                             <td>
                                 <div class="btns">
 
-                                    <a href="delete.php?conId=<?php echo $data['contact_id']; ?>" class="delete">
+                                    <a href="delete.php?skId=<?php echo $data['sk_id']; ?>" class="delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
-
                                 </div>
                             </td>
                         </tr>
                 <?php
                         $sno++;
                     }
-                }
-                ?>
-
+                } ?>
             </tbody>
         </table>
         <?php
-        $select = "SELECT * FROM `contact`";
-        $select_run = mysqli_query($conn, $select);
-        $total_records = mysqli_num_rows($select_run);
+        $select_cat = "SELECT * FROM `skills`";
+        $select_cat_run = mysqli_query($conn, $select_cat);
+        $total_records = mysqli_num_rows($select_cat_run);
         $total_num =   ceil($total_records / $limit);
 
         echo '<ul class="pagination">';
         if ($page > 1) {
             echo "<li>
-                    <a href='contact.php?page=" . ($page - 1) . "'>Prev</a>
+                    <a href='skills.php?page=" . ($page - 1) . "'>Prev</a>
                 </li>";
         }
         for ($i = 1; $i <= $total_num; $i++) {
@@ -87,16 +73,17 @@ if ($_SESSION['role'] == 0) {
                 $active = "";
             }
             echo "<li>
-                    <a href='contact.php?page=$i' class=$active >$i</a>
+                    <a href='skills.php?page=$i' class=$active >$i</a>
                 </li>";
         }
         if ($total_num > $page) {
             echo "<li>
-                    <a href='contact.php?page=" . ($page + 1) . "'>Next</a>
+                    <a href='skills.php?page=" . ($page + 1) . "'>Next</a>
                 </li>";
         }
         echo '</ul>';
         ?>
+
     </div>
 
 </div>

@@ -1,7 +1,12 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
+
+if ($_SESSION['role'] == 0) {
+    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
+}
+
 $message = '';
 if (isset($_POST['setting'])) {
     // values 
@@ -14,7 +19,7 @@ if (isset($_POST['setting'])) {
     $map = mysqli_real_escape_string($conn, $_POST['map']);
     $footer = mysqli_real_escape_string($conn, $_POST['footer']);
     $desc = mysqli_real_escape_string($conn, $_POST['desc']);
-
+    $tmp_name = '';
     if (empty($_FILES['new_img']['name'])) {
         $img_name = $_POST['old_img'];
     } else {
@@ -65,8 +70,10 @@ if (isset($_POST['setting'])) {
                                 <img src="./upload/<?php echo $data['about_img'] ?>" class="show_img">
                             </div>
                         </div>
-                        <input type="text" name="map" placeholder="display map" value="<?php echo $data['map'] ?>">
-                        <input type="text" name="footer" placeholder="enter footer " value="<?php echo $data['footer'] ?>">
+                        <div class="two">
+                            <input type="text" name="map" placeholder="display map" value="<?php echo $data['map'] ?>">
+                            <input type="text" name="footer" placeholder="enter footer " value="<?php echo $data['footer'] ?>">
+                        </div>
                         <textarea placeholder="description" name="desc"><?php echo $data['description'] ?></textarea>
                         <input type="submit" value="update" class="submit_btn" name="setting">
 

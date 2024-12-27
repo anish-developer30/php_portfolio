@@ -1,9 +1,12 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 
-error_reporting(0);
+if ($_SESSION['role'] == 0) {
+    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
+}
+
 
 $message = '';
 if (isset($_POST['education'])) {
@@ -20,7 +23,8 @@ if (isset($_POST['education'])) {
     } else {
         $insert_edu  = "INSERT INTO `education`(`class`, `year`, `institute`, `description`) VALUES ('$class','$year','$institute','$description')";
         if (mysqli_query($conn, $insert_edu)) {
-            header("Location: http://localhost/MYSite/admin/education.php");
+            // header("Location:{$rootName}/admin/education.php");
+            echo "<script> window.location.href='http://localhost/MYSite/admin/education.php'</script>";
         } else {
             $message = "<p>Error</p>";
         }

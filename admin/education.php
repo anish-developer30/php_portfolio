@@ -1,7 +1,11 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
+
+if ($_SESSION['role'] == 0) {
+    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
+}
 ?>
 
 
@@ -12,14 +16,14 @@ include './conn.php';
         <a href="add_education.php" class="add_btn">add education</a>
     </div>
     <div class="table">
-        <table class="tableData">
+        <table class="tableData" border="1" cellspacing="0">
             <thead>
                 <tr>
                     <th>S.no</th>
                     <th>class</th>
                     <th>year</th>
                     <th>institute</th>
-                    <th>description</th>
+                    <th style="width: 400px;">description</th>
                     <th>action</th>
                 </tr>
             </thead>

@@ -1,6 +1,6 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 $message = '';
 if (isset($_POST['add_project'])) {
@@ -40,7 +40,8 @@ if (isset($_POST['add_project'])) {
 
         if (mysqli_multi_query($conn, $insert_pro)) {
             move_uploaded_file($imgtmpname, $arrange_image);
-            header("Location: http://localhost/MYSite/admin/project.php");
+            // header("Location:{$rootName}/admin/project.php");
+            echo "<script> window.location.href='http://localhost/MYSite/admin/project.php'</script>";
         } else {
             $message = "<p>project added error</p>";
         }
@@ -66,7 +67,6 @@ if (isset($_POST['add_project'])) {
                 <input type="text" placeholder="project title" name="title">
                 <div class="two">
                     <select name="category">
-                        <option hidden>select category</option>
                         <?php
                         $select_cat = "SELECT * FROM `category`";
                         $select_cat_run = mysqli_query($conn, $select_cat) or die("add project category select error");

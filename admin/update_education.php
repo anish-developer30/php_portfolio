@@ -1,9 +1,11 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 
-error_reporting(0);
+if ($_SESSION['role'] == 0) {
+    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
+}
 
 $eduId = $_GET['eduId'];
 $message = '';
@@ -15,7 +17,8 @@ if (isset($_POST['up_education'])) {
 
     $update_edu  = "UPDATE `education` SET `class`='$class',`year`='$year',`institute`='$institute',`description`='$description' WHERE `edu_id`=$eduId";
     if (mysqli_query($conn, $update_edu)) {
-        header("Location: http://localhost/MYSite/admin/education.php");
+        // header("Location:{$rootName}/admin/education.php");
+        echo "<script> window.location.href='http://localhost/MYSite/admin/education.php'</script>";
     } else {
         $message = "<p>Error</p>";
     }

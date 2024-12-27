@@ -1,6 +1,6 @@
 <?php
 include './header.php';
-
+$catId = '';
 if (isset($_GET['catId'])) {
     $catId = $_GET['catId'];
     $select_pro = "SELECT * FROM `project` LEFT JOIN category on project.category=category.cat_id WHERE category=$catId";
@@ -14,28 +14,27 @@ if (isset($_GET['catId'])) {
     <div class="options">
         <h1 class="heading">my projects</h1>
 
-        <form action="" class="searchBox">
-            <input type="text" placeholder="search...">
-            <button class="fas fa-search"></button>
-        </form>
+        <!-- <form class="searchBox" method="GET" action="">
+            <input type="text" placeholder="search..." name="text">
+            <button class="fas fa-search" type="submit" name="search"></button>
+        </form> -->
 
         <form action="<?php $_SERVER['PHP_SELF'] ?>" class="form" method="GET">
             <select name="catId">
-                <option hidden>select category</option>
                 <option hidden>select category</option>
                 <?php
                 $select_cat = "SELECT * FROM `category`";
                 $select_cat_run = mysqli_query($conn, $select_cat);
                 if (mysqli_num_rows($select_cat_run) > 0) {
-                    while ($data = mysqli_fetch_assoc($select_cat_run)) {
+                    while ($datacat = mysqli_fetch_assoc($select_cat_run)) {
 
-                        if ($data['cat_id'] == $catId) {
+                        if ($datacat['cat_id'] == $catId) {
                             $selected = 'selected';
                         } else {
                             $selected = '';
                         }
                 ?>
-                        <option <?php echo $selected; ?> value="<?php echo $data['cat_id'] ?>"><?php echo $data['cat_name'] ?></option>
+                        <option <?php echo $selected; ?> value="<?php echo $datacat['cat_id'] ?>"><?php echo $datacat['cat_name'] ?></option>
                 <?php
                     }
                 } ?>
@@ -77,7 +76,7 @@ if (isset($_GET['catId'])) {
         <?php
             }
         } else {
-            echo "<h1 class='notFound'> Project Not Found </h1>";
+            echo "<h1 class='notFound'>Project is Empty </h1>";
         }
         ?>
 

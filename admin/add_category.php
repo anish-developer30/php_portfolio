@@ -1,6 +1,6 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 $message = '';
 if (isset($_POST['cat_btn'])) {
@@ -15,7 +15,8 @@ if (isset($_POST['cat_btn'])) {
         } else {
             $insert_cat =  "INSERT INTO `category`(`cat_name`, `post`) VALUES ('$cat_name',0)";
             if (mysqli_query($conn, $insert_cat)) {
-                header("Location: http://localhost/MYSite/admin/category.php");
+                // header("Location:{$rootName}/admin/category.php");
+                echo "<script> window.location.href='http://localhost/MYSite/admin/category.php'</script>";
             } else {
                 $message = "<p>category not inserted </p>";
             }

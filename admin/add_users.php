@@ -1,9 +1,11 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
 
-error_reporting(0);
+if ($_SESSION['role'] == 0) {
+    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
+}
 
 $message = '';
 
@@ -35,7 +37,8 @@ if (isset($_POST['add_users'])) {
         } else {
             $insert_user = "INSERT INTO `users`(`name`, `phone`, `email`, `password`, `role`) VALUES ('$name','$phone','$email','$password','$role')";
             if (mysqli_query($conn, $insert_user)) {
-                header("Location: http://localhost/MYSite/admin/users.php");
+                // header("Location:{$rootName}/admin/users.php");
+                echo "<script> window.location.href='http://localhost/MYSite/admin/users.php'</script>";
             } else {
                 $message = "<p>user added error </p>";
             }
@@ -61,27 +64,11 @@ if (isset($_POST['add_users'])) {
                     echo $message;
                     ?>
                 </div>
-                <input type="text" placeholder="name" name="name" value="<?php
-                                                                            if (isset($message)) {
-                                                                                echo $name;
-                                                                            }
-                                                                            ?>">
-                <input type="number" placeholder="phone" name="phone" value="<?php
-                                                                                if (isset($message)) {
-                                                                                    echo $phone;
-                                                                                }
-                                                                                ?>">
-                <input type="text" placeholder="email" name="email" value="<?php
-                                                                            if (isset($message)) {
-                                                                                echo $email;
-                                                                            }
-                                                                            ?>">
+                <input type="text" placeholder="name" name="name">
+                <input type="number" placeholder="phone" name="phone">
+                <input type="text" placeholder="email" name="email">
                 <div class=" two">
-                    <input type="password" placeholder="password" name="password" value="<?php
-                                                                                            if (isset($message)) {
-                                                                                                echo $password;
-                                                                                            }
-                                                                                            ?>">
+                    <input type="password" placeholder="password" name="password">
                     <select name="role">
                         <option value="1">admin</option>
                         <option value="0">user</option>

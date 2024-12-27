@@ -1,7 +1,10 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
+
+
+
 $message = '';
 
 $proId = $_GET['proId'];
@@ -45,7 +48,8 @@ if (isset($_POST['update_project'])) {
 
     if (mysqli_multi_query($conn, $update_pro)) {
         move_uploaded_file($imgtmpname, $arrange_image);
-        header("Location: http://localhost/MYSite/admin/project.php");
+        // header("Location:{$rootName}/admin/project.php");
+        echo "<script> window.location.href='http://localhost/MYSite/admin/project.php'</script>";
     } else {
         $message = "<p>project update error</p>";
     }

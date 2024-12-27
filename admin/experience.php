@@ -1,7 +1,11 @@
 <?php
-include './sidebar.php';
 include './header.php';
+include './sidebar.php';
 include './conn.php';
+
+if ($_SESSION['role'] == 0) {
+    echo "<script> window.location.href='http://localhost/MYSite/admin/dashboard.php'</script>";
+}
 ?>
 
 
@@ -12,12 +16,13 @@ include './conn.php';
         <a href="add_experience.php" class="add_btn">add experience</a>
     </div>
     <div class="table">
-        <table class="tableData">
+        <table class="tableData" border="1" cellspacing="0">
             <thead>
                 <tr>
                     <th>S.no</th>
-                    <th>year</th>
                     <th>role</th>
+                    <th>start year</th>
+                    <th>end year</th>
                     <th>company</th>
                     <th>description</th>
                     <th>action</th>
@@ -45,9 +50,10 @@ include './conn.php';
                             <td><?php echo $sno ?></td>
 
                             <td><?php echo $data['role']; ?></td>
-                            <td><?php echo $data['year']; ?></td>
+                            <td><?php echo $data['syear']; ?></td>
+                            <td><?php echo $data['eyear']; ?></td>
                             <td><?php echo $data['company']; ?></td>
-                            <td><?php echo $data['description']; ?></td>
+                            <td style="width: 400px;"><?php echo $data['description']; ?></td>
 
                             <td>
                                 <div class="btns">
