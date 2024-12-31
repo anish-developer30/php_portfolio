@@ -76,7 +76,7 @@ if (isset($_GET['catId'])) {
         <?php
             }
         } else {
-            echo "<h1 class='notFound'>Project is Empty </h1>";
+            echo "<h1 class='notFound'>Project  Not Available </h1>";
         }
         ?>
 

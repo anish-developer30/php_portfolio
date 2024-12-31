@@ -34,7 +34,7 @@ include './admin/conn.php';
     <header class="header">
 
         <a href="<?php echo $rootName ?>" class="logo">
-            <?php echo $data['name'] ?><span>.</span>
+            <img src="./admin/upload/<?php echo $data['logo']; ?>" alt="">
         </a>
         <div class="navbar">
             <a href="index.php" id="home">home</a>

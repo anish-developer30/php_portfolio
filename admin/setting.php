@@ -20,16 +20,25 @@ if (isset($_POST['setting'])) {
     $footer = mysqli_real_escape_string($conn, $_POST['footer']);
     $desc = mysqli_real_escape_string($conn, $_POST['desc']);
     $tmp_name = '';
+    $tmp_logo_name = '';
     if (empty($_FILES['new_img']['name'])) {
         $img_name = $_POST['old_img'];
     } else {
         $img_name = $_FILES['new_img']['name'];
         $tmp_name = $_FILES['new_img']['tmp_name'];
     }
+    if (empty($_FILES['logo_img']['name'])) {
+        $old_logo_name = $_POST['old_logo_img'];
+    } else {
+        $logo_name = $_FILES['logo_img']['name'];
+        $tmp_logo_name = $_FILES['logo_img']['tmp_name'];
+    }
 
-    $update_setting = "UPDATE `setting` SET `name`='$name',`professional`='$prof',`phone`=$phone,`email`='$email',`city`='$city',`map`='$map',`about_img`='$img_name',`footer`='$footer',`description`='$desc' WHERE  `set_id`='$set_id'";
+
+    $update_setting = "UPDATE `setting` SET `name`='$name',`professional`='$prof',`phone`=$phone,`email`='$email',`city`='$city',`map`='$map',`about_img`='$img_name',`logo`='$logo_name' ,`footer`='$footer',`description`='$desc' WHERE  `set_id`='$set_id'";
     if (mysqli_query($conn, $update_setting)) {
         move_uploaded_file($tmp_name, 'upload/' . $img_name);
+        move_uploaded_file($tmp_logo_name, 'upload/' . $logo_name);
     } else {
         $message = "Error";
     }
@@ -73,6 +82,9 @@ if (isset($_POST['setting'])) {
                         <div class="two">
                             <input type="text" name="map" placeholder="display map" value="<?php echo $data['map'] ?>">
                             <input type="text" name="footer" placeholder="enter footer " value="<?php echo $data['footer'] ?>">
+                            <input type="file" name="logo_img">
+                            <input type="hidden" name="old_logo_img" value="<?php echo $data['logo']; ?>">
+                            <img src="./upload/<?php echo $data['logo']; ?>" class="show_img">
                         </div>
                         <textarea placeholder="description" name="desc"><?php echo $data['description'] ?></textarea>
                         <input type="submit" value="update" class="submit_btn" name="setting">

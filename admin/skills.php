@@ -7,7 +7,7 @@ include './conn.php';
     <!-- tables  -->
     <div class="flex">
         <h2 class="tableTitle">category data</h2>
-        <a href="add_skills.php" class="add_btn">add skills</a>
+        <a href="add_skills.php" class="add_btn">add skill</a>
     </div>
     <div class="table">
         <table class="tableData" border="1" cellspacing="0">

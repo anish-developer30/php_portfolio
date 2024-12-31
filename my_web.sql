@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2024 at 12:30 PM
+-- Generation Time: Dec 31, 2024 at 04:16 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -66,10 +66,7 @@ CREATE TABLE `education` (
 --
 -- Dumping data for table `education`
 --
-
-INSERT INTO `education` (`edu_id`, `class`, `year`, `institute`, `description`) VALUES
-(1, '10th', '2018', 'hajarat hakim shah bava high school', '           \r\nI study 10th in my village napad vanta anand in gujarat \r\n                \r\n');
-
+-- add education 
 -- --------------------------------------------------------
 
 --
@@ -84,6 +81,8 @@ CREATE TABLE `experience` (
   `company` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- add experience 
 
 -- --------------------------------------------------------
 
@@ -119,17 +118,14 @@ CREATE TABLE `setting` (
   `city` varchar(100) NOT NULL,
   `map` varchar(255) NOT NULL,
   `about_img` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
   `footer` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `setting`
---
-
-INSERT INTO `setting` (`set_id`, `name`, `professional`, `phone`, `email`, `city`, `map`, `about_img`, `footer`, `description`) VALUES
-(1, 'anish rathod', 'php developer', '6353191430', 'anishr6353@gmail.com', 'napad vanta anand (gujarat)', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29492.52894185821!2d72.96212534602198!3d22.482933395676596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e4ca2dc3a25dd%3A0x33acfa3f23c1291a!2sNapad%20Vanto%2C%20Gujarat!5e0!3m2!1sen!2sin!4v173', 'me.png', 'anish rathod', 'Hello my name is anish rathod. i\'m a fullstack web developer. I\'m From Anand [Gujarat ,India] I have bachelor degree in computer application from C P Patel F H Shah Commerce Collage Anand in 2024');
-
+-- add our setting details
 -- --------------------------------------------------------
 
 --
@@ -160,6 +156,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+INSERT INTO `users` (`user_id`, `name`, `phone`, `email`, `password`, `role`) VALUES
+(12, 'devloper', '1122334455', 'dev@loper.com', 'e77989ed21758e78331b20e477fc5582', '1');
+
+
+-- username = dev@loper.com,
+-- password = dev,
 
 --
 -- Indexes for dumped tables
