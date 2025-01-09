@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>DASHBOARD</title>
     <!-- link css files  -->
     <link rel="stylesheet" href="./css/admin.css">
     <link rel="stylesheet" href="../css/all.css">
@@ -34,7 +34,7 @@ if (!isset($_SESSION['username'])) {
     <section class="header">
         <div id="menu" class="fas fa-bars"></div>
         <div class="dateTime">
-            <div class="date"><?php echo date('j/n/Y'); ?></div>
+            <div class="date"><?php echo date('j/M/Y'); ?></div>
             <div class="date"><?php echo date('g:i a'); ?></div>
             <div class="date"> <?php
                                 if (isset($_SESSION['username'])) {

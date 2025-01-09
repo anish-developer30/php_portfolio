@@ -28,7 +28,7 @@ if (isset($_POST['setting'])) {
         $tmp_name = $_FILES['new_img']['tmp_name'];
     }
     if (empty($_FILES['logo_img']['name'])) {
-        $old_logo_name = $_POST['old_logo_img'];
+        $logo_name = $_POST['old_logo_img'];
     } else {
         $logo_name = $_FILES['logo_img']['name'];
         $tmp_logo_name = $_FILES['logo_img']['tmp_name'];

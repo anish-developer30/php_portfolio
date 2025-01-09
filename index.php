@@ -12,7 +12,8 @@ $data = mysqli_fetch_assoc($query_setting);
 <section class="hero">
     <div class="content">
         <h1><?php echo $data['name'] ?></h1>
-        <a href="" class="btn">download cv</a>
+        <h3><?php echo $data['professional'] ?> </h3>
+        <a href="./admin/pdf/Anish.pdf" target="_blank" class="btn">download cv</a>
     </div>
 </section>
 

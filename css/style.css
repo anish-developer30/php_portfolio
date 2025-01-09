@@ -139,15 +139,16 @@ section {
 }
 
 .hero .content h1 {
-  font-size: 5rem;
+  font-size: 3rem;
   color: #fff;
   text-transform: uppercase;
   text-shadow: 0.2rem 0.2rem 0.5rem var(--black);
 }
 .hero .content h3 {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #fff;
   text-shadow: 0.2rem 0.2rem 0.5rem var(--black);
+  text-transform: uppercase;
 }
 .hero .content .desc {
   margin: 1rem;
@@ -290,10 +291,16 @@ section {
   color: var(--black);
   text-transform: uppercase;
   border: 0.2rem solid rgba(0, 0, 0, 0.2);
-  padding: 0.6rem 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 0.5rem;
   cursor: default;
 }
+
+.skill_container .skillList:nth-child(1) {
+  background-color: var(--main);
+  color: #fff;
+}
+
 .skill_container .skillList:hover {
   background-color: var(--main);
   color: #fff;

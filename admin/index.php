@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <!-- link favocone icon  -->
+    <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
+    <title>Login</title>
+</head>
 <?php
 include './conn.php';
 session_start();
@@ -21,6 +27,7 @@ if (isset($_POST['login'])) {
         if (mysqli_num_rows($select_run) > 0) {
             while ($data = mysqli_fetch_assoc($select_run)) {
                 $_SESSION['username'] = $data['name'];
+                // setcookie('username', $data['name'], time() + (86400 * 15), "/");
                 $_SESSION['user_id'] = $data['user_id'];
                 $_SESSION['role'] = $data['role'];
                 header("Location:{$rootName}/admin/dashboard.php");

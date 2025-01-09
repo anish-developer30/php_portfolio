@@ -56,9 +56,10 @@ $data = mysqli_fetch_assoc($query_setting);
     </div>
     <div class="copy">
         <?php
-        $date = date("Y");
+        #$date = date("Y");
+        # echo $date 
         ?>
-        <p> <sup>&copy;</sup> Copyright <?php echo $date ?> | Create by <span><?php echo $data['footer'] ?></span></p>
+        <p> <sup>&copy;</sup> Copyright 2024 | Create by <span><?php echo $data['footer'] ?></span></p>
     </div>
 </footer>
 
